@@ -1,71 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
 
-/* ===== SAFETY ===== */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 .fa:hover {
   opacity: 0.9;
 }
 
-/* ===== BODY ===== */
+/* ===== BODY BACKGROUND ===== */
 body {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #222;
-  position: relative;
-  padding: 20px;
   background: url("./levi-xu-dOhJtfXJZfw-unsplash.jpg") center / cover no-repeat;
+  position: relative;
+  padding: 12px;
 }
 
+/* DARK OVERLAY */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   z-index: 0;
 }
 
-.card,
-.close-btn,
-.login-btn,
-.brand {
+/* ===== PAGE LAYOUT ===== */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 1;
+  padding: 60px 0 100px;
 }
 
 /* ===== TOP BUTTONS ===== */
 .close-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed;
+  top: 16px;
+  left: 16px;
   background: transparent;
   border: none;
-  font-size: 24px;
+  font-size: 22px;
   color: #ffffff;
   cursor: pointer;
+  z-index: 10;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
 }
 
 .login-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
   background: #ffffff;
   color: #1c2d2b;
   padding: 8px 16px;
@@ -73,6 +70,12 @@ body::before {
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: #f5f5f5;
 }
 
 /* ===== CARD ===== */
@@ -84,30 +87,31 @@ body::before {
   padding: 32px 28px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   text-align: center;
-}
-
-/* Prevent form collapse */
-.card form {
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
 }
 
 .card h1 {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 22px;
+  line-height: 1.3;
 }
 
 /* ===== FORM ===== */
 form input {
   width: 100%;
-  min-height: 46px;
+  height: 46px;
   margin-bottom: 14px;
   padding: 0 16px;
   border-radius: 24px;
   border: 1px solid #e5e5e5;
   font-size: 14px;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+form input:focus {
+  border-color: #3b4f4d;
 }
 
 form input::placeholder {
@@ -116,16 +120,20 @@ form input::placeholder {
 
 .primary-btn {
   width: 100%;
-  min-height: 48px;
+  height: 48px;
   border-radius: 26px;
   border: none;
   background: #3b4f4d;
   color: #ffffff;
   font-weight: 600;
   font-size: 14px;
-  letter-spacing: 0.5px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 6px;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover {
+  background: #2d3d3b;
 }
 
 /* ===== DIVIDER ===== */
@@ -149,7 +157,7 @@ form input::placeholder {
   color: #999;
 }
 
-/* ===== SOCIAL ===== */
+/* ===== SOCIAL BUTTONS ===== */
 .social-buttons {
   display: flex;
   gap: 12px;
@@ -158,7 +166,7 @@ form input::placeholder {
 
 .social {
   flex: 1;
-  min-height: 44px;
+  height: 44px;
   border-radius: 22px;
   border: 1px solid #e5e5e5;
   background: #ffffff;
@@ -169,151 +177,438 @@ form input::placeholder {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.social:hover {
+  background: #f9f9f9;
+  transform: translateY(-1px);
 }
 
 .social span {
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.facebook span {
+  color: #1877f2;
+}
+
+.google span {
+  color: #ea4335;
+}
+
+.social i {
   font-size: 16px;
 }
 
-.facebook span { color: #1877f2; }
-.google span { color: #ea4335; }
-
-/* ===== BRAND (FIXED — NEVER SPLITS) ===== */
-.brand {
-  position: absolute;
-  bottom: 20px;
-  right: 24px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  font-family: "Besley", serif;
+/* ===== TERMS ===== */
+p {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.5;
 }
 
-/* ================= MOBILE FIXES ================= */
+p a {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-/* SMALL PHONES */
-@media (max-width: 360px) {
+p a:hover {
+  color: #3b4f4d;
+  text-decoration: underline;
+}
+
+/* ===== BRAND ===== */
+.brand {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffffff;
+  font-family: "Besley", serif;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.brand span {
+  font-size: 20px;
+}
+
+.brand img {
+  width: 80px;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* ===== TABLETS & SMALL LAPTOPS (768px - 1024px) ===== */
+@media (max-width: 1024px) {
   .card {
-    padding: 22px 16px;
-    border-radius: 14px;
+    max-width: 400px;
+  }
+}
+
+/* ===== STANDARD MOBILE (481px - 767px) ===== */
+@media (max-width: 767px) {
+  body {
+    padding: 10px;
+  }
+
+  .page-wrapper {
+    padding: 55px 0 110px;
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 28px 24px;
   }
 
   .card h1 {
     font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* ===== SMALL MOBILE (376px - 480px) ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .close-btn {
+    font-size: 20px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .login-btn {
+    top: 12px;
+    right: 12px;
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  .page-wrapper {
+    padding: 50px 0 105px;
+  }
+
+  .card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .card h1 {
+    font-size: 19px;
+    margin-bottom: 18px;
   }
 
   form input {
-    min-height: 44px;
+    height: 44px;
+    margin-bottom: 12px;
     font-size: 13px;
+    padding: 0 14px;
   }
 
   .primary-btn {
-    min-height: 46px;
+    height: 46px;
     font-size: 13px;
   }
 
+  .divider {
+    margin: 18px 0;
+  }
+
   .social-buttons {
-    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .social {
+    height: 42px;
+    font-size: 12px;
+  }
+
+  .social i {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 11px;
   }
 
   .brand {
-    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
     gap: 6px;
   }
+
+  .brand span {
+    font-size: 18px;
+  }
+
+  .brand img {
+    width: 90px;
+  }
 }
 
-/* PHONES */
-@media (max-width: 480px) {
+/* ===== EXTRA SMALL MOBILE - iPhone SE, Galaxy Fold (320px - 375px) ===== */
+@media (max-width: 375px) {
   body {
-    padding: 16px;
+    padding: 6px;
   }
 
-  .card {
-    width: 100%;
-    max-width: 100%;
+  .close-btn {
+    font-size: 18px;
+    top: 10px;
+    left: 10px;
   }
 
-  .social-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .close-btn,
   .login-btn {
-    top: 14px;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 11px;
   }
 
-  .brand {
-    bottom: 16px;
-    right: 16px;
-  }
-}
-
-/* TABLETS */
-@media (min-width: 481px) and (max-width: 768px) {
-  .card {
-    max-width: 460px;
-    padding: 30px 26px;
-  }
-}
-/* ===== iPhone SE & Small Height Devices ===== */
-@media (max-width: 375px) and (max-height: 700px) {
-
-  body {
-    padding: 12px;
+  .page-wrapper {
+    padding: 45px 0 95px;
+    min-height: 100vh;
   }
 
   .card {
     padding: 20px 16px;
     border-radius: 14px;
-    max-height: 90vh;
-    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   }
 
   .card h1 {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 16px;
   }
 
   form input {
-    min-height: 42px;
-    margin-bottom: 12px;
+    height: 42px;
+    margin-bottom: 11px;
     font-size: 13px;
+    padding: 0 12px;
+    border-radius: 21px;
   }
 
   .primary-btn {
-    min-height: 44px;
-    font-size: 13px;
-    margin-top: 6px;
+    height: 44px;
+    font-size: 12px;
+    border-radius: 22px;
   }
 
   .divider {
     margin: 16px 0;
   }
 
-  .social {
-    min-height: 42px;
-    font-size: 13px;
+  .divider span {
+    font-size: 11px;
+    margin: 0 10px;
   }
 
   .social-buttons {
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 14px;
   }
 
+  .social {
+    height: 40px;
+    font-size: 11px;
+    border-radius: 20px;
+  }
+
+  .social i {
+    font-size: 14px;
+  }
+
   p {
-    font-size: 12px;
+    font-size: 10.5px;
     line-height: 1.4;
   }
 
   .brand {
+    bottom: 8px;
+    right: 8px;
+    gap: 5px;
+  }
+
+  .brand span {
+    font-size: 15px;
+  }
+
+  .brand img {
+    width: 70px;
+  }
+}
+
+/* ===== VERY SMALL SCREENS - Galaxy Fold closed (< 320px) ===== */
+@media (max-width: 320px) {
+  .page-wrapper {
+    padding: 40px 0 85px;
+  }
+
+  .card {
+    padding: 18px 14px;
+  }
+
+  .card h1 {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  form input {
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .primary-btn {
+    height: 42px;
+  }
+
+  .social {
+    font-size: 10px;
+    height: 38px;
+  }
+
+  .social span {
+    gap: 4px;
+  }
+
+  .brand {
+    bottom: 6px;
+    right: 6px;
+  }
+
+  .brand span {
+    font-size: 13px;
+  }
+
+  .brand img {
+    width: 60px;
+  }
+}
+
+/* ===== SHORT SCREENS (Height-based) ===== */
+@media (max-height: 700px) {
+  .page-wrapper {
+    padding: 50px 0 95px;
+  }
+
+  .card {
+    padding: 24px 20px;
+  }
+
+  .brand img {
+    width: 75px;
+  }
+
+  .brand span {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 600px) {
+  .page-wrapper {
+    padding: 45px 0 85px;
+  }
+
+  .card {
+    padding: 20px 18px;
+  }
+
+  .card h1 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  form input {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .primary-btn {
+    height: 42px;
+    margin-top: 4px;
+  }
+
+  .divider {
+    margin: 16px 0;
+  }
+
+  .social-buttons {
+    margin-bottom: 14px;
+  }
+
+  .social {
+    height: 38px;
+  }
+
+  .brand {
+    bottom: 6px;
+  }
+
+  .brand img {
+    width: 65px;
+  }
+
+  .brand span {
     font-size: 14px;
-    bottom: 12px;
-    right: 12px;
+  }
+}
+
+/* ===== LANDSCAPE MODE (Mobile) ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding: 8px;
+  }
+
+  .page-wrapper {
+    padding: 40px 0 50px;
+  }
+
+  .card {
+    padding: 18px 20px;
+    max-width: 360px;
+  }
+
+  .card h1 {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  form input {
+    height: 38px;
+    margin-bottom: 9px;
+  }
+
+  .primary-btn {
+    height: 40px;
+  }
+
+  .divider {
+    margin: 12px 0;
+  }
+
+  .social {
+    height: 36px;
+  }
+
+  .brand {
+    display: none; /* Hide brand in landscape to save space */
+  }
+
+  .close-btn,
+  .login-btn {
+    top: 8px;
   }
 }

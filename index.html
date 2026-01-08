@@ -14,57 +14,57 @@
 <body>
 
     
-    <button class="close-btn">&#10006;</button>
-   <a href="#" class="login-btn">Login</a>
+    <button class="close-btn" aria-label="Close">&#10006;</button>
+    <a href="#" class="login-btn">Login</a>
    
-   <div class="card">
-    <h1>Create your profile</h1>
+    <div class="page-wrapper">
+        <div class="card">
+            <h1>Create your profile</h1>
 
-    <form>
-        <input type="number" placeholder="Age">
-        <input type="text" name="name" id="text" placeholder="Name (optional)">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Confirm Password">
+            <form>
+                <input type="number" placeholder="Age" min="1" max="120">
+                <input type="text" name="name" id="name" placeholder="Name (optional)">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
 
-        <button class="primary-btn" type="submit">
-            CREATE ACCOUNT
-        </button>
-    </form>
+                <button class="primary-btn" type="submit">
+                    CREATE ACCOUNT
+                </button>
+            </form>
     
-    <div class="divider">
-        <span>OR</span>
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-buttons">
+                <button class="social facebook" type="button">
+                    <span>
+                        <i class="fa fa-facebook"></i>
+                        FACEBOOK
+                    </span>
+                </button>
+
+                <button class="social google" type="button">
+                    <span>
+                        <i class="fa fa-google"></i>
+                        GOOGLE
+                    </span>
+                </button>
+            </div>
+
+            <p>By signing in to Eyis Care, you agree to our 
+                <a href="#">Terms</a>
+                and
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
     </div>
 
-    <div class="social-buttons">
-        <button class="social facebook">
-            <span>
-                <a href="#" class="fa fa-facebook"></a>
-                FACEBOOK
-            </span>
-        </button>
-
-        <button class="social google">
-            <span>
-                <a href="#" class="fa fa-google"></a>
-                GOOGLE
-            </span>
-        </button>
+    <div class="brand">
+        <span>Eyis Care</span>
+        <img src="./eyis care logo.png" alt="Eyis Care Logo">
     </div>
-
-    <P>By signing in to Eyis Care, you agree to our 
-        <a href="#">Terms</a>
-    and
-<a href="#">
-    Privacy Policy
-</a>
-</P>
-</div>
-
-<div class="brand">
-    <span style="font-size: 24px;">Eyis Care</span>
-    <img src="./eyis care logo.png" alt="Logo" style="width: 120px;">
-</div>
-
 
    
 </body>
